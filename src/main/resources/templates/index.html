@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 50%;
+        margin: 0 auto;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+    body {
+        margin: 0 auto;
+    }
+</style>
+<body>
+    <h1>Hello word</h1>
+    <nav th:fragment="navbar" class="navbar navbar-expand-md bg-dark navbar-dark">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" th:href="@{/}">Student Management System</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a class="nav-link" th:href="@{/student}">Student List</a></li>
+
+                <li><a class="nav-link" th:href="@{/subjects}">Subjects</a></li>
+
+                <li><a class="nav-link" th:href="@{/teachers}">Teachers</a></li>
+            </ul>
+        </div>
+    </nav>
+    <table id="allMovies" class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="result" data-th-each="user : ${users}">
+                <td>[[${user.name}]]</td>
+                <td>[[${user.email}]]</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
