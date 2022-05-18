@@ -1,0 +1,29 @@
+version: "3"
+services:
+  friend_management_backend:
+    build: .
+    image: friend-management:1.0
+    container_name: friend_management_backend
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    networks:
+      default:
+    depends_on:
+      - friend_management_database
+  friend_management_database:
+    build: ./database/
+    image: friend_management_database:1.0
+    container_name: friend_management_database
+    restart: unless-stopped
+    ports:
+      - "5435:5432"
+    networks:
+      default:
+    volumes:
+      - database_persistent:/var/lib/mysql
+networks:
+  default:
+volumes:
+  database_persistent: {}
+
