@@ -2,12 +2,12 @@ package com.nhi.nguyen.friendmanagement.service;
 
 
 import com.nhi.nguyen.friendmanagement.dto.*;
-import com.nhi.nguyen.friendmanagement.entity.UsersEntity;
-import com.nhi.nguyen.friendmanagement.entity.UsersRelationshipEntity;
+import com.nhi.nguyen.friendmanagement.entity.UserEntity;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface FriendManagementService {
-//    Flux<UsersEntity> getAllUser();
+    Flux<UserEntity> getAllUser();
 
     /**
      * create a friend connection between two email addresses
@@ -24,12 +24,6 @@ public interface FriendManagementService {
      * retrieve the common friends list between two email addresses
      */
     Mono<RetrieveFriendBetween.Response> getFriendBetween(RetrieveFriendBetween.Request request);
-
-
-    /**
-     * retrieve the common friends list between two email addresses
-     */
-    Mono<RetrieveFriendBetween.Response> getFriendBetween2(RetrieveFriendBetween.Request request);
 
     /**
      * subscribe to update from an email address
