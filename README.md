@@ -71,7 +71,8 @@ Click `Run FriendManagementApplication` button in IntelliJ or press `Shift+F10`
     
     {
        "success": false,
-       "message": error_message    
+       "message": error_message,
+       "statusCode": status_code
     }
 
 #### **4.2. API 2**
@@ -97,8 +98,10 @@ Click `Run FriendManagementApplication` button in IntelliJ or press `Shift+F10`
     
     {
        "success": false,
-       "message": error_message    
+       "message": error_message,
+       "statusCode": status_code
     }
+
 #### **4.3. API 3**
 **METHOD**:  GET
 
@@ -134,7 +137,8 @@ Click `Run FriendManagementApplication` button in IntelliJ or press `Shift+F10`
     
     {
        "success": false,
-       "message": error_message    
+       "message": error_message,
+       "statusCode": status_code
     }
 
 #### **4.4. API 4**
@@ -161,7 +165,8 @@ Click `Run FriendManagementApplication` button in IntelliJ or press `Shift+F10`
     
     {
        "success": false,
-       "message": error_message    
+       "message": error_message,
+       "statusCode": status_code
     }
    
    #### **4.5. API 5**
@@ -188,7 +193,8 @@ Click `Run FriendManagementApplication` button in IntelliJ or press `Shift+F10`
     
     {
        "success": false,
-       "message": error_message    
+       "message": error_message,
+       "statusCode": status_code
     }
 
    #### **4.6. API 6**
@@ -219,5 +225,6 @@ Click `Run FriendManagementApplication` button in IntelliJ or press `Shift+F10`
     
     {
        "success": false,
-       "message": error_message    
+       "message": error_message, 
+       "statusCode": status_code
     }
