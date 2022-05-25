@@ -1,11 +1,8 @@
 package com.nhi.nguyen.friendmanagement.dto;
 
-import com.nhi.nguyen.friendmanagement.entity.UsersRelationshipEntity;
 import lombok.*;
-import reactor.core.publisher.Mono;
 
 import java.util.List;
-import java.util.function.Function;
 
 public interface AddFriend {
     @NoArgsConstructor

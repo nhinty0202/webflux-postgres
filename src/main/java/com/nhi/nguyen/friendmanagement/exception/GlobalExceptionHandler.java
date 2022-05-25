@@ -1,5 +1,6 @@
 package com.nhi.nguyen.friendmanagement.exception;
 
+import com.nhi.nguyen.friendmanagement.contant.MessageConstant;
 import org.springframework.boot.autoconfigure.web.WebProperties;
 import org.springframework.boot.autoconfigure.web.reactive.error.AbstractErrorWebExceptionHandler;
 import org.springframework.boot.web.error.ErrorAttributeOptions;
@@ -13,6 +14,7 @@ import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.server.*;
 import reactor.core.publisher.Mono;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -34,12 +36,16 @@ public class GlobalExceptionHandler extends AbstractErrorWebExceptionHandler {
     }
 
     private Mono<ServerResponse> formatErrorResponse(ServerRequest request){
-        Map<String, Object> errorAttributes  = getErrorAttributes(request, ErrorAttributeOptions.of(ErrorAttributeOptions.Include.MESSAGE));
+        Map<String, Object> errorAttributes  =  getErrorAttributes(request, ErrorAttributeOptions.of(ErrorAttributeOptions.Include.MESSAGE));
+        ErrorMessage errorMessage = new ErrorMessage();
+        errorMessage.setSuccess(false);
+        errorMessage.setMessage((String) Optional.ofNullable(errorAttributes.get("message")).orElse(errorAttributes.get("error")));
         int status = (int) Optional.ofNullable(errorAttributes.get("status")).orElse(500);
+        errorMessage.setStatusCode(status);
         return ServerResponse
                 .status(status)
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(BodyInserters.fromValue(errorAttributes));
+                .body(BodyInserters.fromValue(errorMessage));
 
     }
 }
