@@ -16,6 +16,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.*;
+import java.util.regex.MatchResult;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -120,11 +121,15 @@ public class FriendManagementServiceImpl implements FriendManagementService {
                     .switchIfEmpty(monoResponseStatusNotFoundException(email2))
                     .switchIfEmpty(monoResponseStatusNotFoundException(email1));
     }
+    /**
+     * get email from text
+     */
     private Mono<List<String>> getEmailFromString(String text){
-        return Mono.just(Pattern.compile(StringConstant.REGEX_CHECK_EMAIL).matcher(text))
-                .flatMap(m -> Flux.just(m)
-                        .filter(matcher -> matcher.find() == Boolean.TRUE)
-                        .map(Matcher::group).collectList());
+        return Mono.just(Pattern.compile(StringConstant.REGEX_CHECK_EMAIL)
+                .matcher(text)
+                .results()
+                .map(MatchResult::group)
+                .collect(Collectors.toList()));
     }
 
     /**

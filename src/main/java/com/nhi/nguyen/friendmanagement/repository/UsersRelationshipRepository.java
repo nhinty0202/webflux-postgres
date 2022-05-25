@@ -11,6 +11,6 @@ public interface UsersRelationshipRepository extends ReactiveCrudRepository<User
     @Query("select count(u.id) " +
             "from productdb.friend_management.users_relationship u " +
             "where (u.type = $3 AND u.user_id = $1 AND u.related_user_id = $2)  " +
-            "or (u.type = $4 AND ((u.user_id = $1 and u.related_user_id = $2) or (u.user_id = $2 and u.related_user_id = $1))) limit 1")
+            "or (u.type = $4 AND ((u.user_id = $1 and u.related_user_id = $2) or (u.user_id = $2 and u.related_user_id = $1)))")
     Mono<Integer> checkRelation(Integer userId, Integer relatedId, Integer type, Integer type2);
 }

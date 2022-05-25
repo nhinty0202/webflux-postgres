@@ -29,7 +29,6 @@ public class FriendManagementController {
     @PostMapping("/subscribe")
     public Mono<AddRelation.Response> subscribeUser(@RequestBody AddRelation.Request request) {
         return friendManagementService.subScribeByEmail(request);
-        //  return Mono.just(AddFriend.Response.builder().build());
     }
 
     @PostMapping("/block")
